@@ -12,6 +12,7 @@ npm install
 
 ```
 SUPADATA_API_KEY=xxxxx
+OPENAI_API_KEY=sk-xxxxx
 ```
 
 - 启动开发服务器
@@ -40,13 +41,19 @@ npm run lint
 需求：实现一个Youtube视频字幕提取工具
 工具形式：web
 前端技术栈：Next.js (App Router)、Tailwind CSS、TypeScript
-交互：输入Youtube视频链接，点击提取字幕按钮，调用api，等待字幕返回，前端展示字幕，可下载字幕文件
+交互：
+- 输入Youtube视频链接，点击提取字幕按钮，获取字幕。
+- 点击“AI 总结”按钮，生成带有时间戳的视频内容摘要。
+- 点击摘要中的时间戳（如 [05:23]），视频播放器自动跳转到对应进度。
+- 支持下载字幕文件。
 UI风格：
 - 简洁 clean
 - 响应式设计，适配PC、平板、手机等设备
 - 颜色方案：使用Tailwind CSS的颜色类，保持一致的视觉风格
 - 字体：使用系统默认字体，保持简洁易读
-API来源：Supadata YouTube Transcript API (https://supadata.com/docs/youtube-transcript-api)
+API来源：
+- 字幕提取：Supadata YouTube Transcript API
+- 内容总结：OpenAI API (GPT-4o)
 
 # 端点
 GET https://api.supadata.ai/v1/transcript
